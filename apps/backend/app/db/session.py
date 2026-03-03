@@ -1,12 +1,9 @@
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 from app.core.config import settings
-from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session, sessionmaker
 
 engine = create_engine(
-    settings.database_url,
-    echo=False,          # True solo in debug
-    future=True
+    settings.database_url, echo=False, future=True  # True solo in debug
 )
 
 SessionLocal = sessionmaker(
@@ -14,6 +11,7 @@ SessionLocal = sessionmaker(
     autoflush=False,
     autocommit=False,
 )
+
 
 def get_db() -> Session:
     db = SessionLocal()
