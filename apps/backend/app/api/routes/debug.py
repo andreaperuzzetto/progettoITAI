@@ -6,6 +6,8 @@ from fastapi import Depends
 
 from app.db.session import get_db
 
+from app.services.openai_client import test_openai
+
 router = APIRouter(prefix="/debug", tags=["debug"])
 
 @router.get("/config")
@@ -22,3 +24,7 @@ def config_check():
 def db_check(db: Session = Depends(get_db)):
     db.execute(text("SELECT 1"))
     return {"status": "db connected"}
+
+@router.get("/openai-check")
+def openai_check():
+    return {"response": test_openai()}
