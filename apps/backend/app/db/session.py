@@ -1,9 +1,15 @@
-from app.core.config import settings
 from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
+from app.core.config import get_settings
+
+settings = get_settings()
+
 
 engine = create_engine(
-    settings.database_url, echo=False, future=True  # True solo in debug
+    settings.database_url,
+    echo=False,
+    future=True,
+    pool_pre_ping=True
 )
 
 SessionLocal = sessionmaker(
