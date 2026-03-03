@@ -28,3 +28,8 @@ def db_check(db: Session = Depends(get_db)):
 @router.get("/openai-check")
 def openai_check():
     return {"response": test_openai()}
+
+@router.get("/pinecone-check")
+def pinecone_check():
+    from app.services.pinecone_client import check_index
+    return check_index()
