@@ -7,15 +7,17 @@ ENV PYTHONUNBUFFERED=1
 
 RUN apt-get update && apt-get install -y curl
 
-COPY apps/backend/requirements.txt .
+COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY apps/backend .
+COPY . .
 
 # crea utente non-root
 RUN useradd -m appuser
 
 # usa utente non-root
 USER appuser
+
+EXPOSE 8000
 
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
