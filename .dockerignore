@@ -1,0 +1,33 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.log
+venv
+.env
+
+# Node
+node_modules
+npm-debug.log
+pnpm-debug.log
+
+# Build outputs
+.next
+dist
+build
+
+# OS
+.DS_Store
+
+# Docs
+docs
+
+# Local env
+.env.local
+.env.development
+.env.production
