@@ -8,6 +8,31 @@ Ogni componente principale dell'architettura viene eseguito all'interno di un co
 
 ## Services
 
+# Containerization Goals
+
+La containerizzazione del sistema ha i seguenti obiettivi:
+
+- replicabilità dell'ambiente di sviluppo
+- isolamento dei servizi
+- facilità di deployment
+- compatibilità con infrastrutture cloud
+
+# Container Components
+
+L'architettura containerizzata include due servizi principali.
+
+## Frontend Container
+
+- base image: node
+- runtime: Next.js standalone
+- responsabilità: interfaccia utente
+
+## Backend Container
+
+- base image: python
+- runtime: Uvicorn ASGI server
+- responsabilità: API e logica applicativa
+
 ### Frontend
 
 Tecnologia:

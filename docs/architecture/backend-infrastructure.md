@@ -23,6 +23,18 @@ L’integrazione è stata realizzata mantenendo separazione delle responsabilit�
 
 ---
 
+# Backend Technology Stack
+
+Il backend è implementato utilizzando le seguenti tecnologie:
+
+- **FastAPI** per la costruzione delle API
+- **SQLAlchemy 2.x** come ORM
+- **Pydantic** per la validazione dei dati
+- **Uvicorn** come ASGI server
+- **PostgreSQL** come database principale
+
+---
+
 ## Struttura backend
 
 Il backend mantiene la seguente organizzazione:

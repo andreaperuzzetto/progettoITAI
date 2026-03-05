@@ -1,54 +1,70 @@
-# System Architecture — progettoITAI
+# System Architecture
 
-## Visione generale
+Questo documento descrive l'architettura tecnica del sistema progettoITAI.
 
-progettoITAI è concepito come un Operational Intelligence Layer per IT Service Providers.  
-L’architettura separa chiaramente frontend, backend, data layer e integrazioni AI.
-
----
-
-## Layer applicativi
-
-Frontend  
-Next.js 14 con App Router, responsabile della presentazione e interazione utente.
-
-Backend  
-FastAPI, responsabile della logica applicativa, orchestrazione AI e gestione dati.
-
-Data Layer  
-PostgreSQL (Supabase) per dati strutturati.  
-Pinecone per storage vettoriale e retrieval semantico.
-
-AI Layer  
-OpenAI per classificazione, generazione e embedding.
+L'architettura è progettata per separare chiaramente le responsabilità tra interfaccia utente, logica applicativa, persistenza dei dati e capacità AI, permettendo evoluzione modulare e scalabilità del sistema.
 
 ---
 
-## Struttura backend
+# Technology Stack
 
-Il backend è organizzato nei seguenti moduli:
+Il sistema progettoITAI utilizza il seguente stack tecnologico.
 
-- api → routing e definizione endpoint  
-- core → configurazione e logging  
-- db → engine, sessioni e modelli  
-- services → logica applicativa e AI orchestration  
+## Frontend
 
-Questa separazione consente estendibilità e testabilità.
+- Next.js 14
+- React
+- TailwindCSS
+- shadcn/ui
+
+## Backend
+
+- FastAPI
+- SQLAlchemy 2.x
+- Pydantic / pydantic-settings
+- Uvicorn
+
+## Database
+
+- PostgreSQL
+- Supabase (managed PostgreSQL)
+
+## AI Layer
+
+- OpenAI API
+
+## Vector Database
+
+- Pinecone
+
+## Infrastructure
+
+- Docker
+- Docker Compose
+- Vercel (frontend deployment)
+- Render (backend deployment)
 
 ---
 
-## Data Flow (versione attuale)
+# Architectural Layers
 
-Client → Frontend → Backend → Database  
+Il sistema è organizzato in cinque layer principali.
 
-L’integrazione con AI e vector database sarà introdotta nelle fasi successive.
+```
+             ┌──────────────┐
+             │   Frontend   │
+             │   Next.js    │
+             └──────┬───────┘
+                    │
+                    ▼
+             ┌──────────────┐
+             │    Backend   │
+             │    FastAPI   │
+             └──────┬───────┘
+                    │
+        ┌───────────┼───────────┐
+        ▼           ▼           ▼
 
----
-
-## Deployment Model (target)
-
-Frontend: Vercel  
-Backend: Railway / Render / Fly.io  
-Database: Supabase  
-
-L’architettura è progettata per supportare una futura configurazione multi-tenant.
+   PostgreSQL      OpenAI     Pinecone
+   Data Layer      AI Layer   Vector DB
+```

@@ -8,20 +8,6 @@ Il sistema combina **AI generativa, retrieval semantico e automazione decisional
 
 ---
 
-# Stack
-
-![Next.js](https://img.shields.io/badge/Next.js-14-black)
-![React](https://img.shields.io/badge/React-18-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
-![OpenAI](https://img.shields.io/badge/OpenAI-LLM-orange)
-![Pinecone](https://img.shields.io/badge/Pinecone-VectorDB-purple)
-![Docker](https://img.shields.io/badge/Docker-Containerization-blue)
-![Vercel](https://img.shields.io/badge/Vercel-Frontend%20Deploy-black)
-![Render](https://img.shields.io/badge/Render-Backend%20Deploy-blue)
-
----
-
 # Vision
 
 Le aziende IT lavorano quotidianamente con grandi quantità di informazioni destrutturate:
@@ -32,56 +18,71 @@ Le aziende IT lavorano quotidianamente con grandi quantità di informazioni dest
 - specifiche tecniche
 - comunicazioni cliente
 
-Il valore è presente, ma spesso nascosto nel linguaggio naturale.
+Il valore è presente ma spesso nascosto nel linguaggio naturale.
 
-progettoITAI introduce uno **strato di Operational Intelligence** che:
+progettoITAI introduce uno **strato di Operational Intelligence** che analizza queste informazioni, le struttura e supporta le decisioni operative.
 
-1. analizza queste informazioni  
-2. le trasforma in dati strutturati  
-3. supporta le decisioni operative  
+---
 
-Il sistema non sostituisce l’operatore umano ma lo **aumenta**: l’AI propone classificazioni, stime e analisi, mentre la decisione finale rimane all’utente.
+# Tech Stack
+
+## Frontend
+- Next.js 14
+- React
+- TailwindCSS
+- shadcn/ui
+
+## Backend
+- FastAPI
+- SQLAlchemy 2.x
+- Pydantic / pydantic-settings
+- Uvicorn
+
+## Database
+- PostgreSQL
+- Supabase (managed PostgreSQL)
+
+## AI Layer
+- OpenAI API
+
+## Vector Database
+- Pinecone
+
+## Infrastructure
+- Docker
+- Docker Compose
+- Vercel (frontend deployment)
+- Render (backend deployment)
 
 ---
 
 # Architecture Overview
 
-L’architettura segue una struttura a layer progettata per separare responsabilità e facilitare l’evoluzione del sistema.
+Il sistema è organizzato in più livelli:
 
 ```
-                ┌─────────────────────┐
-                │      Frontend       │
-                │     Next.js App     │
-                └──────────┬──────────┘
-                           │
-                           ▼
-                ┌─────────────────────┐
-                │      Backend        │
-                │      FastAPI        │
-                └──────────┬──────────┘
-                           │
-        ┌──────────────────┼──────────────────┐
-        ▼                  ▼                  ▼
-
- ┌──────────────┐   ┌───────────────┐   ┌───────────────┐
- │ PostgreSQL   │   │   OpenAI API  │   │   Pinecone    │
- │  Data Layer  │   │   AI Layer    │   │ Vector Memory │
- └──────────────┘   └───────────────┘   └───────────────┘
+Frontend (Next.js)
+        ↓
+Backend API (FastAPI)
+        ↓
+PostgreSQL Database
+        ↓
+AI Layer (OpenAI)
+        ↓
+Vector Memory (Pinecone)
 ```
 
-Il sistema integra tre livelli di conoscenza:
+Questa architettura separa chiaramente:
 
-- **memoria strutturata** (database relazionale)
-- **intelligenza generativa** (LLM)
-- **memoria semantica** (vector database)
-
-Questa combinazione permette la costruzione di pipeline RAG e sistemi decisionali AI assistiti.
+- interfaccia utente
+- logica applicativa
+- persistenza dati
+- capacità AI
+- memoria semantica
 
 ---
 
 # Repository Structure
-
-Il progetto è organizzato come **monorepo**.
 
 ```
 progettoITAI
@@ -97,86 +98,46 @@ docs
 
 docker
 docker-compose.yml
-
-pnpm-workspace.yaml
-package.json
-.env.example
 ```
 
-La struttura monorepo permette di mantenere frontend, backend e documentazione nello stesso contesto di sviluppo.
-
 ---
 
-# Live Deployment
+# Development Status
 
-Frontend  
-(Vercel)
+Il progetto segue una roadmap di **16 settimane**.
 
-Backend API  
-(Render)
+Attualmente è completata:
 
-Il deployment separato consente:
+**Week 1 — Infrastructure Foundations**
 
-- scalabilità indipendente dei servizi
-- deploy semplificato
-- isolamento delle responsabilità
+Deliverable principali:
 
----
-
-# Development Roadmap
-
-Il progetto segue una roadmap di sviluppo di **16 settimane**, organizzata in tre fasi principali.
-
-### Phase 1 — MVP
-
-- email ingestion
-- AI classification engine
-- document RAG pipeline
-- proposal generator
-- KPI dashboard
-
-### Phase 2 — Automation Layer
-
-- automation rules engine
-- internal routing system
-- deal scoring engine
-- AI risk analysis
-
-### Phase 3 — Enterprise Layer
-
-- multi-tenant architecture
-- role-based access control
-- audit log & decision trace
-- public API & CRM integration
+- monorepo configurato
+- frontend Next.js operativo
+- backend FastAPI configurato
+- connessione PostgreSQL funzionante
+- integrazione OpenAI predisposta
+- integrazione Pinecone predisposta
+- container Docker funzionanti
+- primo deploy cloud
 
 ---
 
 # Local Setup
 
-### Prerequisites
+Prerequisiti
 
 - Node.js 20+
 - pnpm
 - Python 3.11+
-- Docker (optional)
 
----
-
-## Frontend
+Frontend
 
 ```bash
 pnpm dev:frontend
 ```
 
-Frontend available at
-
-```
-http://localhost:3000
-```
-
----
-
-## Backend
+Backend
 
 ```bash
 cd apps/backend
@@ -184,81 +145,16 @@ source venv/bin/activate
 uvicorn app.main:app --reload
 ```
 
-Backend available at
-
-```
-http://localhost:8000
-```
-
----
-
-# Docker Setup
-
-Run the entire system:
-
-```bash
-docker compose up --build
-```
-
-Services
-
-Frontend  
-```
-http://localhost:3000
-```
-
-Backend  
-```
-http://localhost:8000
-```
-
-Health check
-
-```
-/health
-```
-
 ---
 
 # Documentation
 
-Technical documentation is available in:
+La documentazione tecnica completa è disponibile nella cartella:
 
 ```
 docs/
 ```
 
-Includes:
-
-- architecture documentation
-- engineering development log
-- ADR (architecture decision records)
-
----
-
-# Current Status
-
-The system is **infrastructurally complete but functionally minimal**.
-
-Current capabilities:
-
-- monorepo architecture
-- Next.js frontend
-- FastAPI backend
-- PostgreSQL connection
-- OpenAI integration ready
-- Pinecone vector layer ready
-- Docker containerization
-- cloud deployment
-
-Next development stages will introduce domain models, AI pipelines and business logic.
-
----
-
-# Project Identity
-
-progettoITAI can be described as an:
-
-**Operational Intelligence Layer for IT Service Providers**
-
-A system that receives unstructured information, structures it, evaluates it and turns it into actionable insights using a combination of **AI, decision logic and semantic memory**.
+- `architecture/` → design del sistema
+- `engineering-log/` → cronologia sviluppo
+- `adr/` → architectural decision records

@@ -97,3 +97,16 @@ Questo endpoint verifica:
 - ambiente di esecuzione
 
 Questo consente monitoraggio semplice e integrazione futura con sistemi di observability.
+
+# Deployment Overview
+
+User
+↓
+Frontend (Vercel)
+↓
+Backend API (Render)
+↓
+PostgreSQL (Supabase)
+
+Il frontend comunica esclusivamente con il backend tramite API HTTP.
+Il backend gestisce accesso al database e integrazione con servizi AI.
