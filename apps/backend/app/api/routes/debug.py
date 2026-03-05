@@ -8,7 +8,16 @@ from app.db.session import get_db
 
 from app.services.openai_client import test_openai
 
-router = APIRouter(prefix="/debug", tags=["debug"])
+def debug_guard():
+    if settings.environment != "development":
+        raise HTTPException(status_code=404, detail="Not found")
+
+
+router = APIRouter(
+    prefix="/debug",
+    tags=["debug"],
+    dependencies=[Depends(debug_guard)]
+)
 
 @router.get("/config")
 def config_check():
