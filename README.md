@@ -26,33 +26,32 @@ progettoITAI introduce uno **strato di Operational Intelligence** che analizza q
 
 # Tech Stack
 
-## Frontend
-- Next.js 14
-- React
-- TailwindCSS
-- shadcn/ui
+### Frontend
+![Next.js](https://img.shields.io/badge/Next.js-14-black)
+![React](https://img.shields.io/badge/React-18-blue)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-Framework-38B2AC)
+![shadcn/ui](https://img.shields.io/badge/shadcn-ui-black)
 
-## Backend
-- FastAPI
-- SQLAlchemy 2.x
-- Pydantic / pydantic-settings
-- Uvicorn
+### Backend
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-009688)
+![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-red)
+![Pydantic](https://img.shields.io/badge/Pydantic-Validation-E92063)
+![Uvicorn](https://img.shields.io/badge/Uvicorn-ASGI_Server-499848)
 
-## Database
-- PostgreSQL
-- Supabase (managed PostgreSQL)
+### Database
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-336791)
+![Supabase](https://img.shields.io/badge/Supabase-Managed_DB-3ECF8E)
 
-## AI Layer
-- OpenAI API
+### AI Layer
+![OpenAI](https://img.shields.io/badge/OpenAI-LLM_API-412991)
 
-## Vector Database
-- Pinecone
+### Vector Database
+![Pinecone](https://img.shields.io/badge/Pinecone-Vector_DB-4B6FFF)
 
-## Infrastructure
-- Docker
-- Docker Compose
-- Vercel (frontend deployment)
-- Render (backend deployment)
+### Infrastructure
+![Docker](https://img.shields.io/badge/Docker-Containerization-2496ED)
+![Vercel](https://img.shields.io/badge/Vercel-Frontend_Deploy-black)
+![Render](https://img.shields.io/badge/Render-Backend_Deploy-46E3B7)
 
 ---
 
